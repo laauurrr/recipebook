@@ -17,10 +17,10 @@
 
             include 'data/_data.php';
         ?>
-        <div>
+        <div id="menu">
             <?php include('_menu.php'); ?>
         </div>
-        <div>
+        <div id="content">
             <?php
                 // if ($content != null) {
                     include($content);

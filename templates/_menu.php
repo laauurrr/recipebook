@@ -12,38 +12,20 @@
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
             <li class="site-logo menu-text">RECIPE BOOK</li>
-                <?php
-                    foreach ($types as $id => $type) {
-                        $recipes = ListRecipes($id);
-                        echo '<li><a href="#">' . $type . '</a>';
-                        if ($recipes != null) {
-                            echo '<ul class="menu vertical">';
-                            foreach ($recipes as $id => $r) {
-                                echo '<li><a href="index.php?id='.$id.'">'.$r.'</a></li>';
-                            }
-                            echo '</ul>';
+            <?php
+                foreach ($types as $id => $type) {
+                    $recipes = ListRecipes($id);
+                    echo '<li><a class="secondary button" href="#">' . $type . '</a>';
+                    if ($recipes != null) {
+                        echo '<ul class="menu vertical left">';
+                        foreach ($recipes as $id => $r) {
+                            echo '<li><a class="secondary button left" href="index.php?id='.$id.'">'.$r.'</a></li>';
                         }
-                        echo '</li>';
+                        echo '</ul>';
                     }
-                ?>
-            <!--<li><a href="#">Browse Recipes</a>
-                <ul class="menu vertical">
-                    <?php
-                        // foreach ($types as $id => $type) {
-                        //     $recipes = ListRecipes($id);
-                        //     echo '<li><a href="#">' . $type . '</a>';
-                        //     if ($recipes != null) {
-                        //         echo '<ul class="menu vertical">';
-                        //         foreach ($recipes as $id => $r) {
-                        //             echo '<li><a href="index.php?id='.$id.'">'.$r.'</a></li>';
-                        //         }
-                        //         echo '</ul>';
-                        //     }
-                        //     echo '</li>';
-                        // }
-                    ?>
-                </ul>
-            </li>-->
+                    echo '</li>';
+                }
+            ?>
         </ul>
     </div>
     <div class="top-bar-right">
