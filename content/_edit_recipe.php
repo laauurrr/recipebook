@@ -5,6 +5,18 @@
         //redirect to error page
         header('Location: message/message.php');
     }
+
+    $types = ListTypes();
+
+    function buildOptionTag($id, $type, $recipetype) {
+        $selected = '';
+
+        if ($recipetype == $id) {
+            $selected = ' selected';
+        }
+
+        return '<option value="'.$id.'"'.$selected.'>'.$type.'</option>';
+    }
 ?>
 
 <div class="row">
@@ -15,18 +27,17 @@
                 <div class="large-8 columns">
                     <label>Name
                         <?php echo '<input type="text" name="name" value="'.$recipe['name'].'"/>'; ?>
-                        <input type="hidden" name="recipeid"/>
+                        <?php echo '<input type="hidden" name="recipeid" value="'.$recipe['id'].'"/>'; ?>
                     </label>
                 </div>
                 <div class="large-4 columns">
                     <label>Type
                         <select name="type">
-                            <!--TODO Make this dynamic-->
-                            <option value="0">Breakfast</option>
-                            <option value="1">Lunch</option>
-                            <option value="2">Dinner</option>
-                            <option value="3">Pudding</option>
-                            <option value="4">Misc</option>
+                            <?php
+                                foreach ($types as $id => $type) {
+                                    echo buildOptionTag($id, $type, $recipe['type']);
+                                }
+                            ?>
                         </select>
                     </label>
                 </div>
@@ -34,12 +45,20 @@
             <div class="row">
                 <div class="large-4 columns">
                     <label>Ingredients
-                        <?php echo '<textarea name="ingredients" rows="8">'.$recipe['ingredients'].'</textarea>'; ?>
+                        <textarea name="ingredients" rows="8"><?php 
+                                foreach ($recipe['ingredients'] as $ingredient) {
+                                    echo $ingredient;
+                                } 
+                        ?></textarea>
                     </label>
                 </div>
                 <div class="large-8 columns">
                     <label>Instructions
-                        <textarea name="instructions" rows="8"></textarea>
+                        <textarea name="instructions" rows="8"><?php 
+                                foreach ($recipe['instructions'] as $instruction) {
+                                    echo $instruction;
+                                } 
+                        ?></textarea>
                     </label>
                 </div>
             </div>

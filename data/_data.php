@@ -58,6 +58,7 @@
         
         foreach($result as $row) {
             $recipe['name'] = $row['recipe_name'];
+            $recipe['type'] = $row['type_id'];
 
             foreach($db->query('SELECT * FROM ingredient WHERE recipe_id='.$id.' order by ingredient_order') as $ingredient) {
                 $recipe['ingredients'][$ingredient['ingredient_order']] = $ingredient['ingredient_name'];
@@ -67,6 +68,7 @@
                 $recipe['instructions'][$instruction['instruction_order']] = $instruction['instruction_name'];
             }
 
+            $recipe['image']['id'] = $row['image_id'];
             $recipe['image']['imagename'] = $row['image_name'];
             $recipe['image']['data'] = $row['image_data'];
             $recipe['image']['type'] = $row['image_type'];
