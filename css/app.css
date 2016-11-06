@@ -1,0 +1,44 @@
+/* Top Bar Nav*/
+
+.site-logo {
+    background-color: red;
+}
+
+.desktop-top-bar, .desktop-top-bar ul {
+    background-color: #666666;
+}
+
+.desktop-top-bar li {
+    color: white;
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+    border-color: #FF0000 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right > a::after {
+    border-color: transparent transparent transparent #FF0000;
+}
+
+/* Headings */
+h1 {
+    padding-top: 0.5em;
+}
+
+/* Links */
+a {
+    color: white;
+}
+
+a:hover {
+    color: red;
+}
+
+/* Buttons */
+.button {
+    background-color: red;
+}
+
+.button {
+    background-color: red;
+}
