@@ -1,5 +1,9 @@
 /* Top Bar Nav*/
 
+.top-bar {
+  padding: 0;
+}
+
 .site-logo {
     background-color: red;
 }
@@ -39,6 +43,21 @@ a:hover {
     background-color: red;
 }
 
-.button {
-    background-color: red;
+.button:hover {
+    background-color: green;
+}
+
+/*Preventing FOUC*/
+.no-js .top-bar {
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .no-js .top-bar {
+    display: block;
+  }
+
+  .no-js .title-bar {
+    display: none;
+  }
 }

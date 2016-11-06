@@ -8,7 +8,6 @@
 
 <div class="row">
     <div class="large-4 medium-12 columns">
-        <!--<p><img src="http://lorempixel.com/320/240/food/" alt="Recipe Image" /></p>-->
         <p>
             <?php 
                 echo '<p><img src="data:image/'.$recipe['image']['type'].';base64,'.base64_encode($recipe['image']['data']).'"/></p>';
