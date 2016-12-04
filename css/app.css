@@ -1,23 +1,31 @@
 /* Top Bar Nav*/
 
+.title-bar {
+    background-color: #072141;
+}
+
 .top-bar {
   padding: 0;
 }
 
+    .desktop-top-bar .menu > li > a {
+        line-height: 1.5;
+    }
+
     .top-bar .button {
-    text-align: left;
+        text-align: left;
     }
 
     .top-bar .is-dropdown-submenu {
-        border: 1px solid #777777;
+        border: 1px solid #2B4A6F;
     }
 
 .site-logo {
-    background-color: red;
+    background-color: #072141;
 }
 
 .desktop-top-bar, .desktop-top-bar ul {
-    background-color: #777777;
+    background-color: #2B4A6F;
 }
 
 .desktop-top-bar li {
@@ -43,17 +51,26 @@ a {
 }
 
 a:hover {
-    color: red;
+    color: #072141;
 }
 
 /* Buttons */
 .button {
-    background-color: red;
+    background-color: #2B4A6F;
 }
 
 .button:hover {
-    background-color: green;
+    background-color: #072141;
 }
+
+.button.secondary {
+    background-color: grey;
+}
+
+.button.secondary:hover {
+    background-color: #2B4A6F;
+}
+
 
 /*Misc*/
 #content {
@@ -68,6 +85,16 @@ a:hover {
     #content h2 {
         font-size: 150%;
     }
+
+.recipe-list-view  {
+    border: none;
+    background-color: #efefef;
+}
+
+    .recipe-list-view:hover {
+        color: #072141;
+    }
+
 
 /*Preventing FOUC*/
 .no-js .top-bar {

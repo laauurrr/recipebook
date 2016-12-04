@@ -13,8 +13,8 @@
                 echo '<p><img class="recipe-image" src="data:image/'.$recipe['image']['type'].';base64,'.base64_encode($recipe['image']['data']).'"/></p>';
             ?>
         <!--</p>-->
-        <?php echo '<a href="edit.php?id='.$recipe['id'].'" class="small button">Edit Recipe</a>'; ?>
-        <button type="button" class="small button">Delete Recipe</button>
+        <?php echo '<a href="edit.php?id='.$recipe['id'].'" class="small secondary button">Edit Recipe</a>'; ?>
+        <button type="button" class="small secondary button">Delete Recipe</button>
     </div>
 
     <div class="large-8 medium-12 columns">

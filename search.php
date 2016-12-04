@@ -1,4 +1,4 @@
 <?php
-    $content = 'content/_list_recipes.php';
+    $content = 'content/_search_recipes.php';
     include('templates/_master.php');
 ?>

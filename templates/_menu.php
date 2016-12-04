@@ -7,35 +7,40 @@
   <div class="title-bar-title">Menu</div>
 </div>
 
- <!--DESKTOP TOP BAR-->
-<div class="top-bar desktop-top-bar" data-topbar role="navigation" id="example-menu">
+<div class="top-bar mobile-top-bar desktop-top-bar show-for-small-only" data-topbar role="navigation" id="example-menu">
     <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="site-logo menu-text">RECIPE BOOK</li>
+        <ul class="dropdown menu vertical" data-dropdown-menu>
+            <li>
+                <a class="button" href="list.php?id=-1">All</a></li>
             <?php
                 foreach ($types as $id => $type) {
                     $recipes = ListRecipes($id);
-                    echo '<li><a class="secondary button" href="#">' . $type . '</a>';
-                    if ($recipes != null) {
-                        echo '<ul class="menu vertical left">';
-                        foreach ($recipes as $id => $r) {
-                            echo '<li><a class="secondary button left" href="index.php?id='.$id.'">'.$r.'</a></li>';
-                        }
-                        echo '</ul>';
-                    }
-                    echo '</li>';
+                    echo '<li><a class="button" href="list.php?id='.$id.'">' . $type . '</a></li>';
+                }
+            ?>
+
+            <li><a href="create.php" class="secondary button">Create Recipe</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="top-bar desktop-top-bar hide-for-small-only" data-topbar role="navigation">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="site-logo menu-text">RECIPE BOOK</li>
+            <li>
+                <a class="button" href="list.php?id=-1">All</a></li>
+            <?php
+                foreach ($types as $id => $type) {
+                    $recipes = ListRecipes($id);
+                    echo '<li><a class="button" href="list.php?id='.$id.'">' . $type . '</a></li>';
                 }
             ?>
         </ul>
     </div>
     <div class="top-bar-right">
         <ul class="menu">
-            <!--<li><input type="search" placeholder="Search"></li>
-            <li><button type="button" class="button">Search</button></li>-->
-            <li><a href="create.php" class="button">Create Recipe</a></li>
+            <li><a href="create.php" class="secondary button">Create Recipe</a></li>
         </ul>
     </div>
 </div>
-
-<!--MOBILE TOP BAR-->
-<!--TBA-->

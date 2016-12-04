@@ -87,5 +87,5 @@
     }
     
     echo $recipeid;
-    header('Location: ../index.php?id='.$recipeid);
+    header('Location: ../view.php?id='.$recipeid);
 ?>

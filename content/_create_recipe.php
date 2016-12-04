@@ -41,9 +41,16 @@
             <div class="row">
                 <div class="large-12 columns text-center">
                     <button type="submit" class="button" name="submit">Create</button>
-                    <button type="button" class="secondary button">Cancel</button>
+                    <button type="button" class="secondary button" onclick="cancel()">Cancel</button>
                 </div>            
             </div>            
         </form>
     </div>
 </div>
+
+<script>
+    function cancel() {
+        window.location.href = "index.php";
+    }
+
+</script>

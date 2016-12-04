@@ -15,6 +15,20 @@
         return $db;
     }
 
+    function GetTypeName($id) {
+        $db = GetDB();
+        $sql = 'SELECT type_name FROM type WHERE type_id=:id';
+        $stmt = $db->prepare($sql);
+        $stmt->execute(array(':id' => $id));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $type = null;
+        
+        foreach($result as $row) {
+            $type = $row['type_name'];
+        }
+        return $type;
+    }
+
     function ListTypes() {
         $db = GetDB();
         $sql = 'SELECT * FROM type';
@@ -31,15 +45,55 @@
 
     function ListRecipes($type) {
         $db = GetDB();
-        $sql = 'SELECT * FROM recipe WHERE type_id=:type ORDER BY recipe_name';
+        $sql = 'SELECT * '.
+                'FROM recipe r, image i '.
+                'WHERE r.image_id = i.image_id '.
+                'AND type_id=:type '.
+                'ORDER BY recipe_name '; 
+
         $stmt = $db->prepare($sql);
         $stmt->execute(array(':type' => $type));
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $recipe = null;
         $recipes = null;
         
         foreach($result as $row) {
-            $recipes[$row['recipe_id']] = $row['recipe_name'];
+            $recipe['name'] = $row['recipe_name'];
+            $recipe['image']['id'] = $row['image_id'];
+            $recipe['image']['imagename'] = $row['image_name'];
+            $recipe['image']['data'] = $row['image_data'];
+            $recipe['image']['type'] = $row['image_type'];
+
+            $recipes[$row['recipe_id']] = $recipe;
         }
+
+        return $recipes;
+    }
+
+    function ListAllRecipes() {
+        $db = GetDB();
+        $sql = 'SELECT * '.
+                'FROM recipe r, image i '.
+                'WHERE r.image_id = i.image_id '.
+                'ORDER BY recipe_name '; 
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $recipe = null;
+        $recipes = null;
+        
+        foreach($result as $row) {
+            $recipe['name'] = $row['recipe_name'];
+            $recipe['image']['id'] = $row['image_id'];
+            $recipe['image']['imagename'] = $row['image_name'];
+            $recipe['image']['data'] = $row['image_data'];
+            $recipe['image']['type'] = $row['image_type'];
+
+            $recipes[$row['recipe_id']] = $recipe;
+        }
+
         return $recipes;
     }
 
